@@ -332,8 +332,10 @@ namespace PantheonTerminal {
                 if (x != -1 && y != -1) {
                     move (x, y);
                 } else {
-                    x = (Gdk.Screen.width ()  - default_width)  / 2;
-                    y = (Gdk.Screen.height () - default_height) / 2;
+                    Gdk.Rectangle geometry;
+                    get_screen ().get_monitor_geometry (get_screen ().get_primary_monitor (), out geometry);
+                    x = (geometry.width  - default_width)  / 2;
+                    y = (geometry.height - default_height) / 2;
                     move (x, y);
                 }
             }
